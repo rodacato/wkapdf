@@ -23,7 +23,7 @@ module Exporter
             }
           },
           :basic_auth => {
-            :username => APP_CONF['exporter']['docraptor']['api_key']
+            :username => settings.exporter.docraptor.api_key
           }
         }
         build_document

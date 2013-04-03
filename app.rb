@@ -1,11 +1,15 @@
 $:.unshift File.expand_path('../../../lib', __FILE__)
 
 require 'sinatra/base'
+require 'sinatra/config_file'
 require 'sinatra/assetpack'
+
 
 class App < Sinatra::Base
   set :root, File.dirname(__FILE__)
   register Sinatra::AssetPack
+
+  config_file '../config/config.yml'
 
   assets do
 
@@ -47,12 +51,6 @@ class App < Sinatra::Base
 
   error do
     erb :'500'
-  end
-
-  # Redirects
-
-  get '/twitter' do
-    redirect 'http://twitter.com'
   end
 
   # Partials
