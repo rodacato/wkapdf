@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= @title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= css :application %>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <%= render_partial 'partials/nav' %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <%= yield %>
+        </div><!--/span-->
+      </div><!--/row-->
+      <%= render_partial 'partials/footer' %>
+    </div><!--/.fluid-container-->
+    <%= js  :application %>
+  </body>
+</html>

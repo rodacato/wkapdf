@@ -1,0 +1,11 @@
+# Global
+.DS_Store
+
+# Bundler
+.bundle
+
+# Ruby
+.rvmrc
+
+# Style
+.sass-cache
