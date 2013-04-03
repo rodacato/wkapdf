@@ -12,6 +12,11 @@ gem 'unicorn'
 # Sass
 gem "sass", "~> 3.2.1"
 
+# PDF Handling
+gem 'httparty'
+gem 'wicked_pdf'
+gem 'pdfcrowd'
+
 group :development do
   gem 'shotgun'
   gem 'debugger'
