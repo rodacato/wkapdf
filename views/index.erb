@@ -1,8 +1,33 @@
 <h1>PDF Tester</h1>
 <p>Test different pdf providers performance and pdf quality</p>
 
+<div>
+  <form action="/extract" class="form-search form-horizontal">
+
+    <input name="url" type="text" class="input-xxlarge search-query" placeholder="http://www.google.com">
+    <button type="submit" class="btn">Create PDF</button>
+
+    <div class="control-group">
+      <div class="controls">
+        <label class="radio">
+          <input type="radio" name="provider"  value="doc_raptor" checked>
+          Doc Raptor&nbsp;&nbsp;&nbsp;
+        </label>
+        <label class="radio">
+          <input type="radio" name="provider" value="pdfcrowd">
+          PDF Crowd&nbsp;&nbsp;&nbsp;
+        </label>
+        <label class="radio">
+          <input type="radio" name="provider" value="wkhtmltopdf">
+          WkHTMLtoPDF&nbsp;&nbsp;&nbsp;
+        </label>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+
 <br>
-
 <div class="well">
-
 </div>

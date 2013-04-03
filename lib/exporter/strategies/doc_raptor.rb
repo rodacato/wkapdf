@@ -23,7 +23,7 @@ module Exporter
             }
           },
           :basic_auth => {
-            :username => settings.exporter.docraptor.api_key
+            :username => 'ws2lXv8oOnUBK0V75D'
           }
         }
         build_document
