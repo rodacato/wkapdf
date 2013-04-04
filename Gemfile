@@ -14,8 +14,11 @@ gem "sass", "~> 3.2.1"
 
 # PDF Handling
 gem 'httparty'
-gem 'wicked_pdf'
 gem 'pdfcrowd'
+
+group :production do
+  gem 'wkhtmltopdf-heroku'
+end
 
 group :development do
   gem 'shotgun'
