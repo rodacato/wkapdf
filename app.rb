@@ -1,9 +1,11 @@
 $:.unshift File.expand_path('lib', File.dirname(__FILE__))
 
 require 'rubygems'
-require 'debugger'
+require 'debugger' if self.class.development?
 
 require 'sinatra/base'
+require 'sinatra/config_file'
+require 'sinatra/contrib'
 require 'sinatra/assetpack'
 
 require 'exporter/pdf'
@@ -16,8 +18,15 @@ require 'exporter/strategies/wkhtmltopdf'
 class App < Sinatra::Base
   set :root, File.dirname(__FILE__)
   register Sinatra::AssetPack
+  register Sinatra::ConfigFile
 
-  enable :logging, :dump_errors, :raise_errors
+  use Rack::CommonLogger
+
+  configure(:production, :development) do
+    enable :logging, :dump_errors, :raise_errors, :show_exceptions, :static
+  end
+
+  config_file '../config/config.yml'
 
   assets do
     #js_compression :closure
@@ -45,12 +54,10 @@ class App < Sinatra::Base
   end
 
   before do
-    puts '[Params]'
-    puts params
+    logger.info params
   end
 
   # Routes
-
   get '/' do
     erb :index
   end
@@ -72,7 +79,6 @@ class App < Sinatra::Base
 
 
   # Errors
-
   not_found do
     erb :'404'
   end
@@ -82,7 +88,6 @@ class App < Sinatra::Base
   end
 
   # Partials
-
   helpers do
     def render_partial(template, args = {})
       template_array = template.to_s.split('/')
