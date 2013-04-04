@@ -29,9 +29,6 @@ class App < Sinatra::Base
   config_file '../config/config.yml'
 
   assets do
-    #js_compression :closure
-    js_compression :uglify
-
     serve '/js', from: '/app/js'
     js :application, [
       '/js/vendor/jquery.js',
@@ -72,7 +69,7 @@ class App < Sinatra::Base
                     Exporter::Strategies::DocRaptor.new
                 end
     exporter = Exporter::Pdf.new(provider)
-    exporter.build("#{SecureRandom.urlsafe_base64(10)}.pdf}", params['url'])
+    exporter.build("#{settings.root}/public/pdfs/#{SecureRandom.urlsafe_base64(10)}.pdf", params['url'])
 
     erb :index
   end

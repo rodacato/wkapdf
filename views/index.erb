@@ -10,15 +10,15 @@
     <div class="control-group">
       <div class="controls">
         <label class="radio">
-          <input type="radio" name="provider"  value="doc_raptor" checked>
+          <input type="radio" name="provider"  value="doc_raptor" <%= 'checked' if params.empty? || params['provider'] == 'doc_raptor' %>>
           Doc Raptor&nbsp;&nbsp;&nbsp;
         </label>
         <label class="radio">
-          <input type="radio" name="provider" value="pdfcrowd">
+          <input type="radio" name="provider" value="pdfcrowd" <%= 'checked' if params['provider'] == 'pdfcrowd' %>>
           PDF Crowd&nbsp;&nbsp;&nbsp;
         </label>
         <label class="radio">
-          <input type="radio" name="provider" value="wkhtmltopdf">
+          <input type="radio" name="provider" value="wkhtmltopdf" <%= 'checked' if params['provider'] == 'wkhtmltopdf' %>>
           WkHTMLtoPDF&nbsp;&nbsp;&nbsp;
         </label>
       </div>

@@ -9,7 +9,7 @@ module Exporter
     end
 
     def build(filename, html_or_page_url)
-      file = File.open("#{settings.root}/public/pdfs/#{SecureRandom.urlsafe_base64(10)}.pdf", 'wb') do |f|
+      file = File.open(filename, 'wb') do |f|
         @benchmark = Benchmark.measure {
           f.write @strategy.create(filename, html_or_page_url)
         }
