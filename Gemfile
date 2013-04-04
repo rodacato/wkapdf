@@ -16,10 +16,6 @@ gem "sass", "~> 3.2.1"
 gem 'httparty'
 gem 'pdfcrowd'
 
-group :production do
-  gem 'wkhtmltopdf-heroku'
-end
-
 group :development do
   gem 'shotgun'
   gem 'debugger'
