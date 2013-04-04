@@ -9,3 +9,5 @@
 
 # Style
 .sass-cache
+
+tmp/*

@@ -60,6 +60,7 @@ class App < Sinatra::Base
   end
 
   get '/extract' do
+    filename = "#{settings.root}/tmp/#{SecureRandom.urlsafe_base64(10)}.pdf"
     provider = case params['provider']
                   when 'pdfcrowd'
                     Exporter::Strategies::Pdfcrowd.new
@@ -69,11 +70,9 @@ class App < Sinatra::Base
                     Exporter::Strategies::DocRaptor.new
                 end
     exporter = Exporter::Pdf.new(provider)
-    exporter.build("#{settings.root}/public/pdfs/#{SecureRandom.urlsafe_base64(10)}.pdf", params['url'])
-
-    erb :index
+    exporter.build(filename, params['url'])
+    send_file File.open(filename)
   end
-
 
   # Errors
   not_found do

@@ -9,7 +9,7 @@ module Exporter
     end
 
     def build(filename, html_or_page_url)
-      file = File.open(filename, 'wb') do |f|
+      File.open(filename, 'w+b') do |f|
         @benchmark = Benchmark.measure {
           f.write @strategy.create(filename, html_or_page_url)
         }
