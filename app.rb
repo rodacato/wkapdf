@@ -1,7 +1,7 @@
 $:.unshift File.expand_path('lib', File.dirname(__FILE__))
 
 require 'rubygems'
-require 'debugger' if self.class.development?
+require 'debugger'
 
 require 'sinatra/base'
 require 'sinatra/config_file'
