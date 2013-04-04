@@ -9,12 +9,11 @@ module Exporter
       base_uri "https://docraptor.com"
 
       def create(filename, html_or_page_url)
-        html = uri?(html_or_page_url) ? extract_html(html_or_page_url) : html_or_page_url
+        html = uri?(html_or_page_url) ? {:document_url => html_or_page_url} : {:document_content => html_or_page_url}
 
         @options = {
           :body => {
             :doc => {
-              :document_content => html,
               :name             => filename,
               :document_type    => "pdf",
               :test             => true,
@@ -26,6 +25,7 @@ module Exporter
             :username => 'ws2lXv8oOnUBK0V75D'
           }
         }
+        @options[:body][:doc].merge!(html)
         build_document
       end
 
