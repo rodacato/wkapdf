@@ -15,8 +15,5 @@ gem "sass", "~> 3.2.1"
 # PDF Handling
 gem 'httparty'
 gem 'pdfcrowd'
-
-group :development do
-  gem 'shotgun'
-  gem 'debugger'
-end
+gem 'shotgun'
+gem 'debugger'
