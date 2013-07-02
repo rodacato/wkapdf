@@ -2,12 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (2.6.4)
-    chunky_png (1.2.8)
     columnize (0.3.6)
-    compass (0.12.2)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.1)
     debugger (1.5.0)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -15,7 +10,6 @@ GEM
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.0)
     eventmachine (1.0.0)
-    fssm (0.2.10)
     httparty (0.10.2)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
@@ -50,8 +44,6 @@ GEM
       rack-test
       sinatra (~> 1.3.0)
       tilt (~> 1.3)
-    sinatra-support (1.2.2)
-      sinatra (>= 1.0)
     tilt (1.3.3)
     unicorn (4.6.2)
       kgio (~> 2.6)
@@ -62,7 +54,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  compass
   debugger
   httparty
   pdfcrowd
@@ -72,5 +63,4 @@ DEPENDENCIES
   sinatra (~> 1.3.4)
   sinatra-assetpack
   sinatra-contrib (~> 1.3.1)
-  sinatra-support
   unicorn

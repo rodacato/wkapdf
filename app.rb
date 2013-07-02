@@ -7,8 +7,6 @@ require 'sinatra/base'
 require 'sinatra/config_file'
 require 'sinatra/contrib'
 require 'sinatra/assetpack'
-require 'compass'
-require 'sinatra/support'
 
 require 'exporter/pdf'
 require 'exporter/pdf_utils'
@@ -23,7 +21,7 @@ class App < Sinatra::Base
   set :root, File.dirname(__FILE__)
   set :protection, :except => [:frame_options]
 
-  register Sinatra::AssetPack, Sinatra::ConfigFile, Sinatra::CompassSupport
+  register Sinatra::AssetPack, Sinatra::ConfigFile
 
   configure(:production, :development) do
     enable :logging, :dump_errors, :raise_errors, :show_exceptions, :static
@@ -63,14 +61,14 @@ class App < Sinatra::Base
   end
 
   get '/showcase' do
-    @original = "/generate/wkhtmltopdf.pdf?url=#{params['url']}"
-    @urls = [ "/generate/pdfcrowd.pdf?url=#{params['url']}",
-              "/generate/doc_raptor.pdf?url=#{params['url']}"
+    @urls = [ "/generate/wkhtmltopdf?url=#{params['url']}",
+              "/generate/pdfcrowd?url=#{params['url']}",
+              "/generate/doc_raptor?url=#{params['url']}"
             ]
     erb :showcase
   end
 
-  get '/generate/:provider.pdf' do
+  get '/generate/:provider' do
     filename = "#{settings.root}/tmp/#{SecureRandom.urlsafe_base64(10)}.pdf"
     provider = case params['provider']
                   when 'pdfcrowd'
@@ -82,7 +80,7 @@ class App < Sinatra::Base
                 end
     exporter = Exporter::Pdf.new(provider)
     exporter.build(filename, params['url'])
-    send_file File.open(filename), :type => 'application/pdf'
+    send_file File.open(filename), :type => :pdf
   end
 
   # Errors
