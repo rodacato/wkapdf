@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'bundler'
+require 'rack/protection'
 
 root_dir = File.dirname(__FILE__)
 

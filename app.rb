@@ -7,6 +7,8 @@ require 'sinatra/base'
 require 'sinatra/config_file'
 require 'sinatra/contrib'
 require 'sinatra/assetpack'
+require 'compass'
+require 'sinatra/support'
 
 require 'exporter/pdf'
 require 'exporter/pdf_utils'
@@ -16,11 +18,12 @@ require 'exporter/strategies/pdfcrowd'
 require 'exporter/strategies/wkhtmltopdf'
 
 class App < Sinatra::Base
-  set :root, File.dirname(__FILE__)
-  register Sinatra::AssetPack
-  register Sinatra::ConfigFile
+  use Rack::CommonLogger, Rack::Protection
 
-  use Rack::CommonLogger
+  set :root, File.dirname(__FILE__)
+  set :protection, :except => [:frame_options]
+
+  register Sinatra::AssetPack, Sinatra::ConfigFile, Sinatra::CompassSupport
 
   configure(:production, :development) do
     enable :logging, :dump_errors, :raise_errors, :show_exceptions, :static
@@ -59,19 +62,27 @@ class App < Sinatra::Base
     erb :index
   end
 
-  get '/extract' do
+  get '/showcase' do
+    @original = "/generate/wkhtmltopdf.pdf?url=#{params['url']}"
+    @urls = [ "/generate/pdfcrowd.pdf?url=#{params['url']}",
+              "/generate/doc_raptor.pdf?url=#{params['url']}"
+            ]
+    erb :showcase
+  end
+
+  get '/generate/:provider.pdf' do
     filename = "#{settings.root}/tmp/#{SecureRandom.urlsafe_base64(10)}.pdf"
     provider = case params['provider']
                   when 'pdfcrowd'
                     Exporter::Strategies::Pdfcrowd.new
                   when 'wkhtmltopdf'
                     Exporter::Strategies::Wkhtmltopdf.new
-                  else 'doc_raptor'
+                  when 'doc_raptor'
                     Exporter::Strategies::DocRaptor.new
                 end
     exporter = Exporter::Pdf.new(provider)
     exporter.build(filename, params['url'])
-    send_file File.open(filename)
+    send_file File.open(filename), :type => 'application/pdf'
   end
 
   # Errors

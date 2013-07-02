@@ -1,33 +1,39 @@
-<h1>PDF Tester</h1>
-<p>Test different pdf providers performance and pdf quality</p>
+<script type="text/javascript">
+  $.backstretch([
+      "http://db.tt/Ls70GJc8"
+    , "http://db.tt/Bjow1L0I"
+    , "http://db.tt/RUwG7CH8"
+  ], {duration: 3000, fade: 1500});
 
-<div>
-  <form action="/extract" class="form-search form-horizontal" target="_blank">
+  $(function(e) {
 
-    <input name="url" type="text" class="input-xxlarge search-query" placeholder="http://www.google.com">
-    <button type="submit" class="btn">Create PDF</button>
+    var btn = $(".button-wrapper");
+    var input = $("input[type=text]")
 
-    <div class="control-group">
-      <div class="controls">
-        <label class="radio">
-          <input type="radio" name="provider"  value="doc_raptor" <%= 'checked' if params.empty? || params['provider'] == 'doc_raptor' %>>
-          Doc Raptor&nbsp;&nbsp;&nbsp;
-        </label>
-        <label class="radio">
-          <input type="radio" name="provider" value="pdfcrowd" <%= 'checked' if params['provider'] == 'pdfcrowd' %>>
-          PDF Crowd&nbsp;&nbsp;&nbsp;
-        </label>
-        <label class="radio">
-          <input type="radio" name="provider" value="wkhtmltopdf" <%= 'checked' if params['provider'] == 'wkhtmltopdf' %>>
-          WkHTMLtoPDF&nbsp;&nbsp;&nbsp;
-        </label>
-      </div>
+    input.focus(function() {
+      btn.removeClass("fadeOutLeft");
+      btn.addClass("animated fadeInDown");
+      btn.fadeIn();
+    });
+
+    input.focusout(function() {
+      btn.removeClass("fadeInDown");
+      btn.addClass("fadeOutLeft");
+      btn.fadeOut(800);
+    });
+
+  });
+</script>
+
+<div class="wrapper">
+  <form method="get" action="/showcase" class="google-data animated fadeInUp">
+
+    <div style="height: 100%;">
+        <input type="text" name="url" placeholder="http://google.com">
     </div>
 
+    <div class="button-wrapper">
+        <input type="submit" id="search">
+    </div>
   </form>
-</div>
-
-
-<br>
-<div class="well">
 </div>

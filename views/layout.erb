@@ -8,17 +8,11 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <%= js  :application %>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
   </head>
   <body>
-    <%= render_partial 'partials/nav' %>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-          <%= yield %>
-        </div><!--/span-->
-      </div><!--/row-->
-      <%= render_partial 'partials/footer' %>
-    </div><!--/.fluid-container-->
-    <%= js  :application %>
+    <%= yield %>
   </body>
 </html>
