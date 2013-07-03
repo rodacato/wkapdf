@@ -6,7 +6,7 @@ module Exporter
     class Pdfcrowd
       include Exporter::PdfUtils
 
-      def create(filename, html_or_page_url)
+      def create(filename, html_or_page_url, options = nil)
         @client = ::Pdfcrowd::Client.new('wakalord', '91004a27978dd61416da547373f447b0')
         build_document(html_or_page_url)
       end

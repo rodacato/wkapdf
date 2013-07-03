@@ -79,8 +79,12 @@ class App < Sinatra::Base
                     Exporter::Strategies::DocRaptor.new
                 end
     exporter = Exporter::Pdf.new(provider)
-    exporter.build(filename, params['url'])
+    exporter.build(filename, params['url'], params['options'] || nil)
     send_file File.open(filename), :type => :pdf
+  end
+
+  get '/tester' do
+
   end
 
   # Errors

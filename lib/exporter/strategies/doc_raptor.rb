@@ -8,7 +8,7 @@ module Exporter
 
       base_uri "https://docraptor.com"
 
-      def create(filename, html_or_page_url)
+      def create(filename, html_or_page_url, options = nil)
         html = uri?(html_or_page_url) ? {:document_url => html_or_page_url} : {:document_content => html_or_page_url}
 
         @options = {

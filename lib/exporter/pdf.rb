@@ -8,10 +8,10 @@ module Exporter
       @strategy = strategy
     end
 
-    def build(filename, html_or_page_url)
+    def build(filename, html_or_page_url, options = nil)
       File.open(filename, 'w+b') do |f|
         @benchmark = Benchmark.measure {
-          f.write @strategy.create(filename, html_or_page_url)
+          f.write @strategy.create(filename, html_or_page_url, options)
         }
       end
     end

@@ -252,25 +252,26 @@ body {
   background: #e74c3c;
   color: #222;
 }
-.test {
-  padding: 17px;
+.nav-bar {
+  padding: 20px;
   width: 100%;
   background: #fff;
   background: rgba(255,255,255,0.8);
   text-align: center;
 }
-.test li {
+.nav-bar li {
   display: inline-block;
   position: relative;
 }
-.test li a {
+.nav-bar li a {
   display: block;
   font-size: 1.5em;
   margin: 0 10px;
   color: inherit;
   text-decoration: none;
+  line-height: 33px;
 }
-.test li.current:before {
+.nav-bar li.current:before {
   content: "";
   position: absolute;
   bottom: -28px;
@@ -281,7 +282,7 @@ body {
   border-top: 8px solid rgba(255,255,255,0.8);
   border-right: 10px solid transparent;
 }
-.test li.current:after {
+.nav-bar li.current:after {
   content: "";
   position: absolute;
   bottom: -28px;
