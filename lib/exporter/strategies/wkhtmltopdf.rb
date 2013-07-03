@@ -5,7 +5,7 @@ module Exporter
     class Wkhtmltopdf
 
       def create(filename, html_or_page_url, options = nil)
-        response = `wkhtmltopdf #{html_or_page_url} #{filename}`
+        response = `wkhtmltopdf11 #{options.gsub(/\r\n/, '')} #{html_or_page_url} #{filename}`
         File.open(filename).read
       end
     end

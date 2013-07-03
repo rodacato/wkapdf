@@ -84,7 +84,7 @@ class App < Sinatra::Base
   end
 
   get '/tester' do
-
+    erb :tester
   end
 
   # Errors

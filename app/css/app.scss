@@ -1,3 +1,7 @@
+  html,
+  body {
+    height: 100%;
+  }
 
   body {
     margin: 0;
@@ -47,7 +51,8 @@
       font-size: 22px;
       padding-bottom: 20px;
     }
-    input {
+    input,
+    textarea {
       &[type=text], &[type=password] {
         width: 604px;
         padding: 8px 4px 8px 10px;
@@ -90,7 +95,8 @@
 
   /* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
 
-  .no-boxshadow .google-data input {
+  .no-boxshadow .google-data input,
+  .no-boxshadow .google-data textarea {
     &[type=text]:focus, &[type=password]:focus {
       outline: 1px solid white;
     }
@@ -200,7 +206,7 @@ body{
   background:#e74c3c;
 }
 
-i{
+i.loading {
   height:$font-size+em;
   width:$font-size+em;
   border-radius:100%;
@@ -252,6 +258,7 @@ body {
   background: #e74c3c;
   color: #222;
 }
+.side-bar,
 .nav-bar {
   padding: 20px;
   width: 100%;
