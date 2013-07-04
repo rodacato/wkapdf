@@ -1,12 +1,11 @@
 <script type="text/javascript">
   $.backstretch([
-      "http://db.tt/Ls70GJc8"
-    , "http://db.tt/Bjow1L0I"
-    , "http://db.tt/RUwG7CH8"
+      "/images/01.jpg"
+    , "/images/02.jpg"
+    , "/images/03.jpg"
   ], {duration: 3000, fade: 1500});
 
   $(function(e) {
-
     var btn = $(".button-wrapper");
     var input = $("input[type=text]")
 
@@ -26,14 +25,13 @@
 </script>
 
 <div class="wrapper">
-  <form method="get" action="/showcase" class="google-data animated fadeInUp">
-
-    <div style="height: 100%;">
-        <input type="text" name="url" placeholder="http://google.com">
+  <form method="get" action="/showcase" class="input-data animated fadeInUp">
+    <div>
+      <input type="text" name="url" placeholder="http://google.com">
     </div>
 
     <div class="button-wrapper">
-        <input type="submit" id="search">
+      <input type="submit" id="search">
     </div>
   </form>
 </div>

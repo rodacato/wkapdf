@@ -1,11 +1,9 @@
 require 'rubygems'
-require 'sinatra'
 require 'bundler'
-require 'rack/protection'
 
-root_dir = File.dirname(__FILE__)
+::RACK_ENV = ENV['RACK_ENV'] || 'development'
+Bundler.require(:default, RACK_ENV)
 
-Bundler.require
-require File.join(root_dir + "/app.rb")
+require "#{File.dirname(__FILE__)}/app"
 
 run App

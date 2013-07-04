@@ -1,36 +1,25 @@
-  html,
-  body {
-    height: 100%;
-  }
 
-  body {
-    margin: 0;
-    padding: 0;
-    background: #fff;
-  }
+/* Reset */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  color: #222;
+  font-family: 'Raleway', Arial, sans-serif;
+}
 
-  .google {
-    width: 100%;
-    height: auto;
-  }
+body{
+  background: #e74c3c;
+}
 
-  .wrapimg {
-    background: #000;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-    opacity: 0.7;
-    display:none;
-  }
-
-  .wrapper {
-    width: 620px;
-    height: auto;
-    margin: auto;
-    margin-top: 200px;
-  }
+/* index.html */
+.wrapper {
+  width: 620px;
+  height: auto;
+  margin: auto;
+  margin-top: 200px;
 
   .button-wrapper {
     width: 70px;
@@ -39,70 +28,48 @@
     margin-top: 5px;
     display: none;
   }
+}
 
-  .google-data {
-    width: 620px;
-    padding: 10px;
-    position: relative;
-    font-family: 'Raleway', Arial, sans-serif;
-    color: white;
-    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
-    h1 {
-      font-size: 22px;
-      padding-bottom: 20px;
+
+.input-data {
+  width: 620px;
+  padding: 10px;
+  position: relative;
+  color: white;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+
+  input[type=text] {
+    width: 604px;
+    padding: 8px 4px 8px 10px;
+    border: 1px solid #999;
+    border: 1px solid rgba(78, 48, 67, 0.3);
+    background: rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    color: #444;
+    font-size: 16px;
+
+    &::-webkit-input-placeholder {
+      color: rgba(37, 21, 26, 0.5);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
     }
-    input,
-    textarea {
-      &[type=text], &[type=password] {
-        width: 604px;
-        padding: 8px 4px 8px 10px;
-        border: 1px solid #999;
-        border: 1px solid rgba(78, 48, 67, 0.3);
-        background: rgba(0, 0, 0, 0.24);
-        border-radius: 2px;
-        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.1);
-        -webkit-transition: all 0.3s ease-out;
-        -moz-transition: all 0.3s ease-out;
-        -ms-transition: all 0.3s ease-out;
-        -o-transition: all 0.3s ease-out;
-        transition: all 0.3s ease-out;
-        font-family: 'Raleway', Arial, sans-serif;
-        color: #444;
-        font-size: 16px;
-      }
-      &::-webkit-input-placeholder {
-        color: rgba(37, 21, 26, 0.5);
-        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
-      }
-      &:-moz-placeholder {
-        color: rgba(37, 21, 26, 0.5);
-        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
-      }
-      &:-ms-input-placeholder {
-        color: rgba(37, 21, 26, 0.5);
-        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
-      }
-      &[type=text]:hover, &[type=password]:hover {
-        border-color: rgba(51, 51, 51, 0.4);
-      }
-      &[type=text]:focus, &[type=password]:focus, &[type=submit]:focus {
-        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(255, 255, 255, 0.15);
-        outline: none;
-        background: #fff;
-      }
+
+    &:hover {
+      border-color: rgba(51, 51, 51, 0.4);
+    }
+
+    &:focus {
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(255, 255, 255, 0.15);
+      outline: none;
+      background: #fff;
     }
   }
 
-  /* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
 
-  .no-boxshadow .google-data input,
-  .no-boxshadow .google-data textarea {
-    &[type=text]:focus, &[type=password]:focus {
-      outline: 1px solid white;
-    }
-  }
-
-  .google-data input[type=submit] {
+  input[type=submit] {
     width: auto;
     text-align: center;
     padding: 8px 9px;
@@ -111,8 +78,6 @@
     margin: 0;
     background-image: -webkit-linear-gradient(top, #dd4b39, #c53727);
     background-image: -moz-linear-gradient(top, #dd4b39, #c53727);
-    background-image: -ms-linear-gradient(top, #dd4b39, #c53727);
-    background-image: -o-linear-gradient(top, #dd4b39, #c53727);
     background-image: linear-gradient(top, #dd4b39, #c53727);
     border: 1px solid #B0281A;
     border-radius: 2px;
@@ -120,90 +85,65 @@
     cursor: pointer;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
     color: white;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
     font-size: 14px;
-    font-family: 'Raleway', Arial, sans-serif;
+
     &:nth-child(1) {
       margin: 0 10px 0 0;
     }
+
     &:hover {
       box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), inset 0 20px 30px rgba(99, 64, 86, 0.1);
     }
-  }
 
-  .no-boxshadow .google-data input[type=submit]:hover {
-    background: #594642;
-  }
-
-  .google-data label {
-    display: none;
-    padding: 0 0 5px 2px;
-    cursor: pointer;
-    &:hover ~ input {
-      border-color: #333;
+    &:focus {
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(255, 255, 255, 0.15);
+      outline: none;
+      background: #fff;
     }
   }
 
-  .no-placeholder .google-data label {
-    display: block;
-  }
+}
 
-  .switch {
-    margin: 10px;
-    float: right;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-    a {
-      &:hover {
-        color: #000;
-      }
-      &:link, &:visited, &:hover, &:active {
-        color: #333;
-        font-size: 12px;
-        font-weight: 700;
-        text-decoration: none;
-        font-family: 'Raleway', Arial, sans-serif;
-        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
-      }
-    }
-  }
+
+
+/* showcase */
 
 
 
 
-
-
-
-
-
-
+/* loading */
 
 $font-size:2;
 
-@-webkit-keyframes spin{
+@mixin spin {
   0%{
     top:0;
     -webkit-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    transform:rotate(0deg);
   }
   50%{
     top:-($font-size*2)+em;
     -webkit-transform:rotate(-180deg);
+    -moz-transform:rotate(-180deg);
+    transform:rotate(-180deg);
   }
   100%{
     top:0;
     -webkit-transform:rotate(-360deg);
+    -moz-transform:rotate(-360deg);
+    transform:rotate(-360deg);
   }
 }
 
-body{
-  background:#e74c3c;
+@-webkit-keyframes spin {
+  @include spin;
+}
+@-moz-keyframes spin {
+  @include spin;
 }
 
 i.loading {
@@ -216,6 +156,7 @@ i.loading {
   position:absolute;
   left:50%;
   -webkit-animation:spin 2s ease infinite;
+  -moz-animation:spin 2s ease infinite;
   animation:spin 2s ease infinite;
 
   &:before, &:after{
@@ -227,6 +168,7 @@ i.loading {
     background:inherit;
     border-radius:inherit;
     -webkit-animation:spin 2s ease infinite;
+    -moz-animation:spin 2s ease infinite;
     animation:spin 2s ease infinite;
   }
   &:before{
@@ -246,18 +188,7 @@ i.loading {
 
 
 
-html {
-  overflow-x: hidden;
-}
-.rr {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-body {
-  background: #e74c3c;
-  color: #222;
-}
+
 .side-bar,
 .nav-bar {
   padding: 20px;
@@ -265,38 +196,45 @@ body {
   background: #fff;
   background: rgba(255,255,255,0.8);
   text-align: center;
-}
-.nav-bar li {
-  display: inline-block;
-  position: relative;
-}
-.nav-bar li a {
-  display: block;
-  font-size: 1.5em;
-  margin: 0 10px;
-  color: inherit;
-  text-decoration: none;
-  line-height: 33px;
-}
-.nav-bar li.current:before {
-  content: "";
-  position: absolute;
-  bottom: -28px;
-  right: 50%;
-  width: 9999px;
-  height: 0;
-  border-top: 8px solid #fff;
-  border-top: 8px solid rgba(255,255,255,0.8);
-  border-right: 10px solid transparent;
-}
-.nav-bar li.current:after {
-  content: "";
-  position: absolute;
-  bottom: -28px;
-  left: 50%;
-  width: 9999px;
-  height: 0;
-  border-top: 8px solid #fff;
-  border-top: 8px solid rgba(255,255,255,0.8);
-  border-left: 10px solid transparent;
+
+  li {
+    display: inline-block;
+    position: relative;
+
+    &.current:before,
+    &.current:after {
+      content: "";
+      position: absolute;
+      bottom: -28px;
+      width: 9999px;
+      height: 0;
+      border-top: 8px solid #fff;
+      border-top: 8px solid rgba(255,255,255,0.8);
+    }
+
+    &.current:after {
+      right: 50%;
+      border-right: 10px solid transparent;
+    }
+
+    &.current:before {
+      left: 50%;
+      border-left: 10px solid transparent;
+    }
+
+    a {
+      display: block;
+      font-size: 1.5em;
+      margin: 0 10px;
+      color: inherit;
+      text-decoration: none;
+      line-height: 33px;
+    }
+  }
+
+  .clear {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 }

@@ -1,3 +1,33 @@
+<nav class="nav-bar">
+  <ul class="clear">
+    <li class="current">
+      <a href="#">
+        <img src="/images/webkit.png" alt="wkHTMLtoPDF" />wkHTMLtoPDF
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="/images/crowdpdf.png" alt="" />CrowdPDF
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="/images/docraptor.png" alt="" />DocRaptor
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="loading" style="position:absolute; width:100%: height: 100%; top: 40%; left: 50%;">
+  <i class="loading"></i>
+</div>
+
+<div class="content" style="display:none; text-align: center;">
+  <% @urls.each_with_index do |u, i| %>
+    <iframe data-index="<%= i %>" src="<%= u %>" frameborder="0" style="width:800px; height: 800px; margin: 20px auto 0 auto; display:none;"></iframe>
+  <% end %>
+</div>
+
 <script type="text/javascript">
 $(function() {
   var temp,
@@ -33,34 +63,3 @@ $(function() {
   });
 });
 </script>
-
-<nav class="nav-bar">
-
-  <ul class="rr">
-    <li class="current">
-      <a href="#">
-        <img src="/images/webkit.png" alt="wkHTMLtoPDF" />wkHTMLtoPDF
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="/images/crowdpdf.png" alt="" />CrowdPDF
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="/images/docraptor.png" alt="" />DocRaptor
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<div class="loading" style="position:absolute; width:100%: height: 100%; top: 40%; left: 50%;">
-  <i class="loading"></i>
-</div>
-
-<div class="content" style="display:none; text-align: center;">
-  <% @urls.each_with_index do |u, i| %>
-    <iframe data-index="<%= i %>" src="<%= u %>" frameborder="0" style="width:800px; height: 800px; margin: 20px auto 0 auto; display:none;"></iframe>
-  <% end %>
-</div>

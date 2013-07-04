@@ -2,30 +2,21 @@ $:.unshift File.expand_path('lib', File.dirname(__FILE__))
 
 require 'rubygems'
 require 'debugger'
+require 'require_all'
 
 require 'sinatra/base'
-require 'sinatra/config_file'
 require 'sinatra/contrib'
 require 'sinatra/assetpack'
 
-require 'exporter/pdf'
-require 'exporter/pdf_utils'
-require 'exporter/strategies/exceptions'
-require 'exporter/strategies/doc_raptor'
-require 'exporter/strategies/pdfcrowd'
-require 'exporter/strategies/wkhtmltopdf'
+require_all 'lib'
 
 class App < Sinatra::Base
+  register Sinatra::AssetPack, Sinatra::ConfigFile
   use Rack::CommonLogger, Rack::Protection
 
   set :root, File.dirname(__FILE__)
-  set :protection, :except => [:frame_options]
 
-  register Sinatra::AssetPack, Sinatra::ConfigFile
-
-  configure(:production, :development) do
-    enable :logging, :dump_errors, :raise_errors, :show_exceptions, :static
-  end
+  enable :sessions, :logging, :dump_errors, :raise_errors, :show_exceptions, :static
 
   config_file '../config/config.yml'
 
@@ -36,11 +27,11 @@ class App < Sinatra::Base
       '/js/vendor/jquery.*.js',
       '/js/vendor/underscore.js',
       '/js/vendor/bootstrap.js',
+      '/js/jquery.backstretch.min.js',
       '/js/app.js'
     ]
 
     css_compression :sass
-
     serve '/css', from: '/app/css'
     css :application, [
       '/css/bootstrap/bootstrap.css',
@@ -49,10 +40,6 @@ class App < Sinatra::Base
     ]
 
     prebuild true
-  end
-
-  before do
-    logger.info params
   end
 
   # Routes
