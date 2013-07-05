@@ -48,10 +48,10 @@ class App < Sinatra::Base
   end
 
   get '/showcase' do
-    @urls = [ "/generate/wkhtmltopdf?url=#{params['url']}",
-              "/generate/pdfcrowd?url=#{params['url']}",
-              "/generate/doc_raptor?url=#{params['url']}"
-            ]
+    @urls = { :wkhtmltopdf => "/generate/wkhtmltopdf?url=#{params['url']}",
+              :pdfcrowd => "/generate/pdfcrowd?url=#{params['url']}",
+              :docraptor => "/generate/doc_raptor?url=#{params['url']}"
+            }
     erb :showcase
   end
 

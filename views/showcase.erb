@@ -3,8 +3,11 @@
 </div>
 
 <div class="content">
-  <% @urls.each_with_index do |u, i| %>
-    <iframe data-index="<%= i %>" src="<%= u %>" frameborder="0" style="width:30%; min-height: 550px; float:left; margin: 20px;"></iframe>
+  <% @urls.each_pair do |key, value| %>
+    <div class="iframe-wrapper <%= key%>">
+      <i></i>
+      <iframe src="<%= value %>" frameborder="0" class="iframe-result"></iframe>
+    </div>
   <% end %>
 </div>
 
@@ -19,7 +22,6 @@
 
       if (pdfTotal == pdfCounter){
         $('.loading').animate({ opacity: 0 }, 500);
-        $('iframe:first').show();
         $('.content').show('slow');
       }
     });
