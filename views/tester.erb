@@ -6,12 +6,26 @@
       $('.loading-wrapper').animate({ opacity: 1 });
       $('#result').attr('src', '/generate/wkhtmltopdf?' + $('form').serialize());
       return false;
+    }).keypress(function() {
+      return false;
     });
 
     $('#result').on('load', function(){
       $('.loading-wrapper').animate({ opacity: 0 }, 500);
       $('.content').css({ opacity: 1 }).show('slow');
     });
+
+    $(document).keypress(function(event) {
+      // 'M' => 77, 'm' => 109
+      if ( event.which == 109 || event.which == 77 ) {
+        $('#help-modal').modal('toggle')
+      }
+    });
+
+    $(document).on('click', function(event) {
+      $('#help-modal').hide('slow');
+    });
+
   });
 </script>
 
@@ -39,5 +53,13 @@
       <iframe id="result" src="" frameborder="0"></iframe>
     </div>
 
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div id="help-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    <p>wkHTMLtoPDF Helper</p>
   </div>
 </div>
