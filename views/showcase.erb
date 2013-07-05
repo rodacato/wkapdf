@@ -1,65 +1,27 @@
-<nav class="nav-bar">
-  <ul class="clear">
-    <li class="current">
-      <a href="#">
-        <img src="/images/webkit.png" alt="wkHTMLtoPDF" />wkHTMLtoPDF
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="/images/crowdpdf.png" alt="" />CrowdPDF
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="/images/docraptor.png" alt="" />DocRaptor
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<div class="loading" style="position:absolute; width:100%: height: 100%; top: 40%; left: 50%;">
+<div class="loading-wrapper">
   <i class="loading"></i>
 </div>
 
-<div class="content" style="display:none; text-align: center;">
+<div class="content">
   <% @urls.each_with_index do |u, i| %>
-    <iframe data-index="<%= i %>" src="<%= u %>" frameborder="0" style="width:800px; height: 800px; margin: 20px auto 0 auto; display:none;"></iframe>
+    <iframe data-index="<%= i %>" src="<%= u %>" frameborder="0" style="width:30%; min-height: 550px; float:left; margin: 20px;"></iframe>
   <% end %>
 </div>
 
 <script type="text/javascript">
-$(function() {
-  var temp,
-      pdfCounter = 0,
-      pdfTotal = <%= @urls.length %>;
+  $(function() {
+    var temp,
+        pdfCounter = 0,
+        pdfTotal = <%= @urls.length %>;
 
-  $('.nav-bar li').hover(function() {
-    temp = $(this).parent().children('.current')
-    temp.removeClass('current');
-    $(this).addClass('current');
-  }, function() {
-    $(this).removeClass('current');
-    temp.addClass('current');
-  }).on('click',function(e){
-    var index = $(this).index();
+    $('iframe').on('load', function(){
+      pdfCounter += 1;
 
-    temp = $(this).parent().children('.current')
-    temp.removeClass('current');
-    $(this).addClass('current');
-
-    $('iframe').hide();
-    $('iframe[data-index='+index+']').show().animate({ opacity: 1 }, 500);
+      if (pdfTotal == pdfCounter){
+        $('.loading').animate({ opacity: 0 }, 500);
+        $('iframe:first').show();
+        $('.content').show('slow');
+      }
+    });
   });
-
-  $('iframe').on('load', function(){
-    pdfCounter += 1;
-
-    if (pdfTotal == pdfCounter){
-      $('.loading').animate({ opacity: 0 }, 500);
-      $('iframe:first').show();
-      $('.content').show('slow');
-    }
-  });
-});
 </script>
