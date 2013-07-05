@@ -13,7 +13,6 @@
   <body>
     <div class="container-fluid" style="width: 100%; height: 100%; padding-left: 0;">
 <!-- 
-
         <img src="/images/webkit.png" alt="wkHTMLtoPDF" />wkHTMLtoPDF
         <img src="/images/crowdpdf.png" alt="" />CrowdPDF
         <img src="/images/docraptor.png" alt="" />DocRaptor
@@ -53,11 +52,29 @@
 
       $(window).on("backstretch.after", function (e, instance, index) {
         // Do something
-        $('header').animate({ opacity:1, 'margin-top':0 }, 500);
+        $('header').animate({ 'margin-top':0 }, 500, 'swing', function(){
+          $('.tester-form form').animate({ 'margin-left':0 }, 500, 'swing', function(){
+            $('.instructions').show();
+          });
+        });
       });
 
       $(function() {
         var temp;
+        var btn = $(".button-wrapper");
+        var input = $("input[type=text], textarea");
+
+        input.focus(function() {
+          btn.removeClass("fadeOutLeft");
+          btn.addClass("animated fadeInDown");
+          btn.fadeIn();
+        });
+
+        input.focusout(function() {
+          btn.removeClass("fadeInDown");
+          btn.addClass("fadeOutLeft");
+          btn.fadeOut(800);
+        });
 
         $('.nav-bar li').hover(function() {
           temp = $(this).parent().children('.current')

@@ -27,7 +27,7 @@ class App < Sinatra::Base
       '/js/vendor/jquery.*.js',
       '/js/vendor/underscore.js',
       '/js/vendor/bootstrap.js',
-      '/js/jquery.backstretch.min.js',
+      '/js/vendor/jquery.backstretch.min.js',
       '/js/app.js'
     ]
 

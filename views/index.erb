@@ -1,24 +1,5 @@
-<script type="text/javascript">
-  $(function(e) {
-    var btn = $(".button-wrapper");
-    var input = $("input[type=text]")
-
-    input.focus(function() {
-      btn.removeClass("fadeOutLeft");
-      btn.addClass("animated fadeInDown");
-      btn.fadeIn();
-    });
-
-    input.focusout(function() {
-      btn.removeClass("fadeInDown");
-      btn.addClass("fadeOutLeft");
-      btn.fadeOut(800);
-    });
-
-  });
-</script>
-
 <div class="wrapper">
+  <img src="/images/text1.png" alt="" />
   <form method="get" action="/showcase" class="input-data animated fadeInUp">
     <div>
       <input type="text" name="url" placeholder="http://google.com">
