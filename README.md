@@ -1,4 +1,4 @@
-#Armor
+#PDF Converter
 
 A simple [Sinatra](http://www.sinatrarb.com/) application ready for rapid prototyping.
 
@@ -9,6 +9,6 @@ A simple [Sinatra](http://www.sinatrarb.com/) application ready for rapid protot
 
 **Deploy locally**
 
-* `$ ruby app.rb`
+* `$ shotgun config.ru`
 
-Then just build.
+Then just play.

@@ -26,17 +26,14 @@ class App < Sinatra::Base
     js :application, [
       '/js/vendor/jquery.js',
       '/js/vendor/jquery.*.js',
-      '/js/vendor/underscore.js',
-      '/js/vendor/bootstrap.js',
-      '/js/vendor/jquery.backstretch.min.js',
-      '/js/app.js'
+      '/js/vendor/bootstrap.min.js'
     ]
 
     css_compression :sass
     serve '/css', from: '/app/css'
     css :application, [
-      '/css/bootstrap/bootstrap.css',
-      '/css/bootstrap/bootstrap-responsive.css',
+      '/css/bootstrap/bootstrap.min.css',
+      '/css/bootstrap/bootstrap-responsive.min.css',
       '/css/app.css'
     ]
 
