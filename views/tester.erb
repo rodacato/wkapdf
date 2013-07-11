@@ -6,8 +6,8 @@
       $('.loading-wrapper').animate({ opacity: 1 });
       $('#result').attr('src', '/generate/wkhtmltopdf?' + $('form').serialize());
       return false;
-    }).keypress(function() {
-      return false;
+    }).keypress(function(event) {
+      event.stopImmediatePropagation();
     });
 
     $('#result').on('load', function(){
@@ -36,10 +36,15 @@
     <form method="get" action="/showcase" class="input-data animated fadeInUp">
       <input type="text" name="url" placeholder="http://google.com">
       <textarea type="text" name="options" placeholder="..."></textarea>
+      <select name="version">
+        <option value="v9">0.9.9</option>
+        <option value="v10" selected='selected'>10.0.rc2</option>
+      </select>
       <div class="button-wrapper">
         <input type="submit">
       </div>
       <img src="/images/text3.png" alt="" />
+
     </form>
     <div class="separator"></div>
   </div>

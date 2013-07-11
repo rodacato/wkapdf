@@ -15,10 +15,11 @@ class App < Sinatra::Base
   use Rack::CommonLogger, Rack::Protection
 
   set :root, File.dirname(__FILE__)
+  set :environments, %w{development test production}
 
   enable :sessions, :logging, :dump_errors, :raise_errors, :show_exceptions, :static
 
-  config_file '../config/config.yml'
+  config_file 'config/config.yml'
 
   assets do
     serve '/js', from: '/app/js'
@@ -61,7 +62,7 @@ class App < Sinatra::Base
                   when 'pdfcrowd'
                     Exporter::Strategies::Pdfcrowd.new
                   when 'wkhtmltopdf'
-                    Exporter::Strategies::Wkhtmltopdf.new
+                    Exporter::Strategies::Wkhtmltopdf.new(:command => settings.wkhtmltopdf[params[:version]] || settings.wkhtmltopdf['v10'])
                   when 'doc_raptor'
                     Exporter::Strategies::DocRaptor.new
                 end

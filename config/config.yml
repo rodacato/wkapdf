@@ -1,13 +1,29 @@
 development:
-  wkhtmltopdf_cmd: 'phantomjs'
+  wkhtmltopdf:
+    v9: 'wkhtmltopdf'
+    v10: 'wkhtmltopdf11'
   exporter:
     docraptor:
       api_key: ws2lXv8oOnUBK0V75D
     pdfcrowd:
       username: wakalord
       api_key: 91004a27978dd61416da547373f447b0
+
 production:
-  wkhtmltopdf_cmd: './vendor/phantomjs/bin/phantomjs'
+  wkhtmltopdf:
+    v9: './bin/wkhtmltopdf.0.9.9'
+    v10: './bin/wkhtmltopdf.10.rc2'
+  exporter:
+    docraptor:
+      api_key: ws2lXv8oOnUBK0V75D
+    pdfcrowd:
+      username: wakalord
+      api_key: 91004a27978dd61416da547373f447b0
+
+test:
+  wkhtmltopdf:
+    v9: 'wkhtmltopdf.0.9.9'
+    v10: 'wkhtmltopdf.10.rc2'
   exporter:
     docraptor:
       api_key: ws2lXv8oOnUBK0V75D
