@@ -22,4 +22,3 @@ group :test, :development do
   gem 'shotgun'
   gem 'debugger'
 end
-
