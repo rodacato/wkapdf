@@ -12,7 +12,7 @@ require_all 'lib'
 
 class App < Sinatra::Base
   register Sinatra::AssetPack, Sinatra::ConfigFile
-  use Rack::CommonLogger, Rack::Protection
+  use Rack::CommonLogger
 
   set :root, File.dirname(__FILE__)
   set :environments, %w{development test production}
