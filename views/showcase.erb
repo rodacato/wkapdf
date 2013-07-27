@@ -5,24 +5,46 @@
 <div class="content">
   <% @urls.each_pair do |key, value| %>
     <div class="iframe-wrapper <%= key%>">
-      <i></i>
+      <% if key == :pdfcrowd %>
+        <a href="https://pdfcrowd.com/" target="blank">
+          <i></i>
+        </a>
+      <% elsif key == :docraptor %>
+        <a href="http://docraptor.com/" target="blank">
+          <i></i>
+        </a>
+      <% else %>
+        <i></i>
+      <% end %>
       <iframe src="<%= value %>" frameborder="0" class="iframe-result"></iframe>
     </div>
   <% end %>
 </div>
 
 <script type="text/javascript">
+  function showPDFs(){
+    $('.loading').animate({ opacity: 0 }, 500);
+    $('.content').show('slow');
+  }
+
   $(function() {
     var temp,
         pdfCounter = 0,
-        pdfTotal = <%= @urls.length %>;
+        pdfTotal = <%= @urls.length %>,
+        timer = null;
 
     $('iframe').on('load', function(){
       pdfCounter += 1;
 
+      if (timer){
+        clearTimeout(timer);
+      }
+
+      timer = setTimeout(showPDFs, 8000);
+
       if (pdfTotal == pdfCounter){
-        $('.loading').animate({ opacity: 0 }, 500);
-        $('.content').show('slow');
+        clearTimeout(timer);
+        showPDFs();
       }
     });
   });

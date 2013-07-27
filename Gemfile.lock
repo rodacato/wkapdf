@@ -13,6 +13,8 @@ GEM
     httparty (0.10.2)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
+    hypdf (0.2.2)
+      httparty (>= 0.10.0)
     jsmin (1.0.1)
     kgio (2.8.0)
     multi_json (1.7.2)
@@ -57,6 +59,7 @@ PLATFORMS
 DEPENDENCIES
   debugger
   httparty
+  hypdf
   pdfcrowd
   rake
   require_all

@@ -17,6 +17,7 @@ gem "sass", "~> 3.2.1"
 # PDF Handling
 gem 'httparty'
 gem 'pdfcrowd'
+gem 'hypdf'
 
 group :test, :development do
   gem 'shotgun'
